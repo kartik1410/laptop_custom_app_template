@@ -8,5 +8,11 @@ Config.AppSettings = {
     icon = "Laptop",
     isVisible = function ()
         return true
-    end
+    end,
+    onAppOpen = function()
+        -- on app open
+    end,
+    onAppClose = function()
+        -- on app close
+    end,
 }
