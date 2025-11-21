@@ -28,6 +28,26 @@ RegisterNUICallback('GET_DEMO_VALUE', function(_, cb)
     cb(data)
 end)
 
+RegisterNetEvent("custom-app:client:openApp",function ()
+    exports['kartik-laptop']:sendReactMessage({
+        action = "TOGGLE_APP",
+        data= {
+            ui = true
+        },
+        iframeId = Config.AppSettings.id 
+    })
+end)
+
+RegisterNetEvent("custom-app:client:closeApp",function ()
+    exports['kartik-laptop']:sendReactMessage({
+        action = "TOGGLE_APP",
+        data = {
+           ui = false
+        },
+        iframeId = Config.AppSettings.id
+    })
+end)
+
 RegisterCommand("setdata",function ()
     exports['kartik-laptop']:sendReactMessage({
         action = "SET_DATA",

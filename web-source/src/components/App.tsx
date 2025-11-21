@@ -7,24 +7,30 @@ const MOCK_DATA = {
 }
 
 const App = () => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('Hello');
+    const [isVisible, setVisible] = useState(false);
 
-    useEffect(() => {
-        document.getElementsByTagName("html")[0].style.visibility = "visible";
-        document.getElementsByTagName("body")[0].style.visibility = "visible";
+    useNuiEvent("TOGGLE_APP", (data) => {
+        setVisible(data.ui || false)
+    });
 
-        fetchNui<any>('GET_DEMO_VALUE', {}, MOCK_DATA).then((data) => {
-            if (data) {
-                setValue(data.some_index);
-            }
-        })
-    }, [])
+    // useEffect(() => {
+    //     fetchNui<any>('GET_DEMO_VALUE', {}, MOCK_DATA).then((data) => {
+    //         if (data) {
+    //             setValue(data.some_index);
+    //         }
+    //     })
+    // }, [])
 
     useNuiEvent("SET_DATA", (data) => {
         if (data) {
             setValue(data.some_index);
         }
     })
+
+    if (!isVisible) {
+        return null;
+    }
 
     return (
         <div className="flex w-screen h-screen" >

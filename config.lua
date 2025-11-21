@@ -10,9 +10,9 @@ Config.AppSettings = {
         return true
     end,
     onAppOpen = function()
-        -- on app open
+        TriggerEvent("custom-app:client:openApp")
     end,
     onAppClose = function()
-        -- on app close
+        TriggerEvent("custom-app:client:closeApp")
     end,
 }
